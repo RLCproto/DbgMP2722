@@ -401,6 +401,11 @@ int open_i2c_dev(const int i2cbus, char *filename, const int quiet)
 	return file;
 }
 
+int close_i2c_dev(int file)
+{
+    return close(file);
+}
+
 int set_slave_addr(int file, int address, int force)
 {
 	/* With force, let the user read from/write to the registers

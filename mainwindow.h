@@ -21,6 +21,7 @@ public:
 private:
     struct i2c_adap *adapters;
     Ui::MainWindow *ui;
+    int i2cBusHook;
 
 private slots:
     void openI2cBus();
