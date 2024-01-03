@@ -17,7 +17,7 @@
    <widget class="QComboBox" name="I2cBusListComboBox">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>40</y>
       <width>72</width>
       <height>23</height>
@@ -35,6 +35,70 @@
     </property>
     <property name="text">
      <string>Refresh</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="I2cRegX">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>100</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>22</number>
+    </property>
+    <property name="displayIntegerBase">
+     <number>16</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="I2cBusRead">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>70</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read Regs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="I2cBusWrite">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>100</y>
+      <width>71</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write Reg</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="I2cRegVal">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>100</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
     </property>
    </widget>
   </widget>

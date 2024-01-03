@@ -4,20 +4,22 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
+LIBS += -li2c
+
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    i2c_device.cpp \
     main.cpp \
     mainwindow.cpp \
-    i2cbusses.c
+    i2cbusses.c \
+    mp2722.cpp
 
 HEADERS += \
-    i2c_device.h \
     mainwindow.h \
-    i2cbusses.h
+    i2cbusses.h \
+    mp2722.h
 
 FORMS += \
     mainwindow.ui
