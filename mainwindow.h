@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
+#include <QLineEdit>
 #include <linux/i2c.h>
 #include "mp2722.h"
 
@@ -24,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     int i2cBusHook;
     MP2722 *MP2722Dev;
+    QVector <QLineEdit*>Regs;
 
 private slots:
     void openI2cBus();
@@ -31,5 +34,6 @@ private slots:
     void refreshI2cBusList();
     void readRegs();
     void writeReg();
+    void RestoreColor(int, int);
 };
 #endif // MAINWINDOW_H

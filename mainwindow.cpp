@@ -20,6 +20,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->I2cBusWrite, &QPushButton::clicked, this, &MainWindow::writeReg);
     refreshI2cBusList();
 
+    for(int i = 0; i < ui->I2cRegX->maximum(); i++)
+    {
+        Regs.append(new QLineEdit);
+        Regs.last()->setAlignment(Qt::AlignHCenter);
+        ui->RegsGrid->addWidget(Regs.last(), i/5, i%5);
+        connect(Regs.last(), &QLineEdit::cursorPositionChanged, this, &MainWindow::RestoreColor);
+        //Regs.last()->setObjectName(QString("Reg") + QString::number(i, 16) + QString("h"));
+        Regs.last()->setReadOnly(1);
+    }
+
     for(int cnt = 0; adapters[cnt].name; cnt++)
     {
         if(ui->I2cBusListComboBox->itemText(cnt) == "MCP2221 usb-i2c bridge")
@@ -96,7 +106,15 @@ void MainWindow::refreshI2cBusList()
 void MainWindow::readRegs()
 {
     for(int i = 0; i < ui->I2cRegX->maximum(); i++)
-        qDebug() << i << ": "<< hex << MP2722Dev->getRegValue(i);
+    {
+        QString newVal = QString::number(MP2722Dev->getRegValue(i), 16);
+        QString oldVal = Regs[i]->text();
+        if(oldVal != "" && oldVal != newVal)
+        {
+            Regs[i]->setStyleSheet("background:#ff0000");
+        }
+        Regs[i]->setText(newVal);
+    }
 }
 
 void MainWindow::writeReg()
@@ -104,4 +122,9 @@ void MainWindow::writeReg()
     int nrReg = ui->I2cRegX->value();
     int RegVal = ui->I2cRegVal->value();
     MP2722Dev->setRegValue(nrReg, RegVal);
+}
+
+void MainWindow::RestoreColor(int, int)
+{
+    qobject_cast<QLineEdit*>(sender())->setStyleSheet("background:#FFFFFF");
 }
