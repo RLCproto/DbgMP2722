@@ -27,6 +27,7 @@ private:
     int i2cBusHook;
     MP2722 *MP2722Dev;
     QVector <QLineEdit*>Regs;
+    QString RegDecs(int regNr, int regVal);
 
 private slots:
     void openI2cBus();
@@ -35,5 +36,6 @@ private slots:
     void readRegs();
     void writeReg();
     void RestoreColor(int, int);
+    void ShowDesc();
 };
 #endif // MAINWINDOW_H
